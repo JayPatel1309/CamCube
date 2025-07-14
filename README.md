@@ -1,15 +1,21 @@
 # CamCube
 An AI-powered Rubik's Cube solver built with Python and OpenCV, featuring live color detection from a mobile camera using a Teachable Machine model and generating solutions with Kociemba's algorithm
-🧩 AI-Powered Rubik's Cube Solver (Live Camera)
+
+# 🧩 AI-Powered Rubik's Cube Solver (Live Camera)
+
 This project provides a real-time Rubik's Cube solver that leverages your mobile phone's camera (via IP Webcam) and a custom-trained Artificial Intelligence (AI) model to detect cube colors and generate a solution using Kociemba's algorithm.
-✨ Features
+
+# ✨ Features
+
 Live Camera Input: Uses your mobile phone as an IP webcam to capture live video frames.
 AI-Powered Color Detection: Employs a TensorFlow/Keras model (trained with Google's Teachable Machine) to accurately identify the colors of individual Rubik's Cube stickers.
 Interactive Scanning: Guides you through scanning each face of the cube by pressing corresponding keys.
 Kociemba's Algorithm Integration: Once all faces are scanned, it uses the powerful Kociemba algorithm to calculate the shortest solution.
 Solution Display: Prints the solution steps to the console. (Future enhancement could include on-screen visual guidance for each move).
 Robust Error Handling: Includes checks for camera connection issues, image decoding failures, and invalid cube states.
-🚀 Getting Started
+
+# 🚀 Getting Started
+
 Follow these steps to set up and run the Rubik's Cube solver on your machine.
 Prerequisites
 Before you begin, ensure you have the following installed:
@@ -17,17 +23,21 @@ Python 3.x
 pip (Python package installer)
 An Android/iOS phone with an IP Webcam app installed. (e.g., "IP Webcam" for Android, various options for iOS).
 Internet connection (for requests to fetch images and for TensorFlow if it needs to download anything).
-📦 Installation
-Clone this repository:
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-cd CamCube
 
+# 📦 Installation
+```
+Clone this repository:
+git clone https://github.com/JayPatel1309/CamCube.git
+cd CamCube
+```
 
 Install Python dependencies:
+```
 pip install opencv-python numpy requests imutils kociemba tensorflow h5py
+```
 
+# 🤖 AI Model Setup (Teachable Machine)
 
-🤖 AI Model Setup (Teachable Machine)
 This project relies on a custom AI model for color detection. You need to train and export this model from Google's Teachable Machine.
 Train Your Model on Teachable Machine:
 Go to teachablemachine.withgoogle.com.
@@ -52,34 +62,44 @@ keras_model.h5 (Your trained AI model)
 labels.txt (A text file listing your class names in the order the model predicts them, e.g., 0 White, 1 Orange, etc.)
 Place Model Files:
 Copy both keras_model.h5 and labels.txt into the root directory of this project (where rubik_solver.py is located).
-📱 IP Webcam Setup
+
+# 📱 IP Webcam Setup
+
 Install IP Webcam App: Download and install an IP Webcam app on your smartphone (e.g., "IP Webcam" for Android, search for similar apps on iOS).
 Start Server: Open the app and start the video server.
 Get URL: The app will display an IP address and port (e.g., 192.168.1.100:8080). The URL you need for this script is typically http://<IP_ADDRESS>:<PORT>/shot.jpg for single frames.
 Update url in rubik_solver.py: Open rubik_solver.py and update the url variable at the top of the script with your phone's IP camera URL.
+```
 url = "http://YOUR_PHONE_IP:8080/shot.jpg" # Example: "http://192.168.1.100:8080/shot.jpg"
+```
 
 Important: Your phone's IP address might change if it reconnects to Wi-Fi. Always verify the URL in the app before running the script.
-🏃‍♀️ Usage
+
+# 🏃‍♀️ Usage
+
 Run the script:
-python rubik_solver.py
+```
+python main.py
+```
 
 
 Position the Cube: Hold your Rubik's Cube in front of your phone's camera. Ensure one face is clearly visible and centered within the green dots on the screen.
 Scan Faces:
 The script will display a live feed with green dots indicating the sampling points for each sticker.
 Press the corresponding key for the face you are currently showing to the camera:
-U for Up face (usually White center)
-R for Right face (usually Red center)
-F for Front face (usually Green center)
-D for Down face (usually Yellow center)
-L for Left face (usually Orange center)
-B for Back face (usually Blue center)
+U for Up face ( White center)
+R for Right face ( Red center)
+F for Front face ( Green center)
+D for Down face ( Yellow center)
+L for Left face ( Orange center)
+B for Back face ( Blue center)
 After each key press, the detected colors for that face will be printed in your console.
 Get Solution: Once you have scanned all 6 faces (U, R, F, D, L, B), the script will automatically attempt to solve the cube and print the solution steps (e.g., R U R' U') to your console.
 Reset: Press R (lowercase) to reset the scanned cube state and start a new scan.
 Exit: Press ESC to close the application.
-💡 Troubleshooting
+
+# 💡 Troubleshooting
+
 Error: Could not connect to ...:
 Double-check the url in rubik_solver.py. Is the IP address correct? Is the port correct?
 Is your IP Webcam app running on your phone and is its server "started"?
@@ -101,7 +121,11 @@ Check your scanned colors: Look at the console output after scanning each face. 
 Verify labels.txt: Ensure the labels.txt file matches the colors you trained in Teachable Machine and that AI_COLOR_LABELS in the script is correctly populated.
 Improve AI Model Training: If colors are consistently misidentified (e.g., red vs. orange), go back to Teachable Machine and add more training examples for those confusing colors, especially under varying lighting. Include Background images!
 Scanning Order: Make sure you're scanning the faces in the correct Kociemba order (U, R, F, D, L, B) and maintaining the cube's orientation between scans.
-🤝 Contributing
+
+# 🤝 Contributing
+
 Feel free to fork this repository, make improvements, and submit pull requests!
-📄 License
+
+# 📄 License
+
 This project is open-source and available under the MIT License.
